@@ -1,9 +1,9 @@
-import styles from './Home.module.css';
+import styles from './Login.module.css';
 import Logo from '../../img/Logo.svg';
-import Login from '../../Login';
+import Login from '../../LoginService';
 
 
-function Home() {
+function Auth() {
     return (
         <main>
             <section className={styles.container}>
@@ -32,4 +32,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Auth;
