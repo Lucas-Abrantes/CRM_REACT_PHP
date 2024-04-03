@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../services/ClientService.module.css'
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate
-
+import { useNavigate } from 'react-router-dom'; 
 
 function Dashboard() {
   const [index, setIndex] = useState([]);
-  const navigate = useNavigate(); // useNavigate em vez de useHistory
+  const navigate = useNavigate(); 
 
 
   useEffect(() => {
@@ -16,19 +15,18 @@ function Dashboard() {
   }, []);
 
   const handleEdit = (userId) => {
-    navigate(`/update/${userId}`); // Modifique a rota conforme necessário
+    navigate(`/update/${userId}`); 
   }
 
 
   const handleDelete = (userId) => {
-    fetch(`http://127.0.0.1:8000/api/destroy/${userId}`, { // Ajuste a URL conforme sua API
+    fetch(`http://127.0.0.1:8000/api/destroy/${userId}`, { 
       method: 'DELETE',
     })
     .then(response => {
       if (!response.ok) {
         throw new Error('Falha ao excluir o usuário');
       }
-      // Exclui o usuário do estado para atualizar a UI
       setIndex(currentUsers => currentUsers.filter(user => user.id !== userId));
     })
     .catch(error => {
@@ -39,7 +37,7 @@ function Dashboard() {
   };
 
   const handleCadastro = () => {
-    navigate('/create'); // Use a rota exata para a tela de cadastro aqui
+    navigate('/create');
   };
 
   return (
