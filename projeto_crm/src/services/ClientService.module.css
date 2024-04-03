@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4em;
 }
 
 
@@ -19,13 +20,14 @@ table {
     border: 1px solid #ddd;
   }
 
+  
   th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #d8c6c6;
     padding: 10px;
     text-align: center;
   }
 
-  /* Cabeçalho da tabela */
+
   th {
     background-color: #0073b7;
     color: white;
@@ -37,13 +39,13 @@ table {
     background-color: #ef9393;
   }
 
-
   .botoes{
     display: flex;
     align-items: center;
     justify-content: center;
     gap:17px;
   }
+
 
   .acao{
     display: flex;
@@ -52,9 +54,9 @@ table {
     width: 80px;
     height: 40px;
     background-color: rgb(31, 60, 115);
-    border: 1px solid white;
     border-radius: 10px;
   }
+
 
   .acao > a{
     font-size: 16px;
@@ -68,5 +70,90 @@ table {
   }
 
 
+  .btnCadastro{
+    width: 30%;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+  }
 
 
+  .btn{
+    width: 100%;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color:  rgb(36, 37, 39);;
+    background: rgba(34,117,210,255);
+    transition: 0.2s;
+    box-shadow: 0px 10px 40px -12px #051f4852;
+  }
+
+
+  .botao{
+    width: 40%;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    color:  rgb(179, 183, 193);
+    background: green;
+    transition: 0.2s;
+    box-shadow: 0px 10px 40px -12px #051f4852;
+  }
+  
+
+  .botao:hover{
+    background: rgb(16, 151, 16);
+    color: rgb(239, 241, 245);
+
+
+  }
+
+
+  .bnt_table{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    background: rgb(34, 117, 210, 255);
+    transition: 0.2s;
+    letter-spacing: 1px;
+    color: rgb(179, 183, 193);
+    box-shadow: 0px 10px 40px -12px #051f4852;
+  }
+
+
+  .bnt_table:hover{
+    background-color: rgb(15, 84, 162);
+    color: rgb(239, 241, 245);
+  }
+
+
+  .bntExcluir{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    background: rgb(230, 62, 62);
+    transition: 0.2s;
+    letter-spacing: 1px;
+    color: rgb(179, 183, 193);
+    box-shadow: 0px 10px 40px -12px #051f4852;
+  }
+
+  .bntExcluir:hover{
+    background: rgb(243, 101, 101);
+    color: rgb(239, 241, 245);
+  }

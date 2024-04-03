@@ -2,12 +2,16 @@
     background-color: rgb(43, 36, 58);
     display: flex;
     width: 100%;
-    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 5vh;
     flex-direction: row;
     color: #fff;
     align-items: center;
     justify-content: center;
 }
+
 
 .social_list{
     display: flex;
@@ -15,10 +19,19 @@
     list-style-type: none;
 }
 
+
 .social_list li{
     margin: 0 1em;
 }
 
+
 .social_list li:hover{
     color: #FFBB33;
+}
+
+
+.midias{
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
 }

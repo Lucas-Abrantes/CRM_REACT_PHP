@@ -3,7 +3,30 @@
     justify-content: space-between;
     background-color: rgb(43, 36, 58);
     padding: 1em;
+    gap: 5px;
 }
+
+
+.logout{
+    border-bottom: 1px solid #FFBB33;
+}
+
+
+.logout > a{
+    font-size: 18px;
+    color: #f9f4f4;
+} 
+
+
+.logout > a:hover{
+    color: #FFBB33;
+}
+
+
+.logout:hover{
+    border-bottom: 1px solid #FFBB33;
+}
+
 
 .list{
     display: flex;
@@ -13,14 +36,17 @@
     justify-content: flex-end;
 }
 
+
 .item{
     margin-right: 2em;
 }
+
 
 .item a{
     color: #FFF;
     text-decoration: none;
 }
+
 
 .item a:hover{
     color: #FFBB33;

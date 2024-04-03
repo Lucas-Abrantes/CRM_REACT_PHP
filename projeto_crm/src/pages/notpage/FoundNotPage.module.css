@@ -1,0 +1,34 @@
+.pageError{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.imagem{
+    width: 50%;
+}
+
+
+.imagem > img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.notPage{
+    background-color: rgb(52, 111, 179);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+
+.notPage > p{
+    font-size: 19px;
+    color: rgb(236, 229, 229);
+    font-weight: 700;
+}

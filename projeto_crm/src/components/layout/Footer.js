@@ -6,9 +6,9 @@ function Footer(){
     return (
         <footer className={styles.footer}>
             <ul className={styles.social_list}>
-                <li><FaFacebook/></li>
-                <li><FaInstagram/></li>
-                <li><FaLinkedin/></li>
+                <li className={styles.midias}><FaFacebook/></li>
+                <li className={styles.midias}><FaInstagram/></li>
+                <li className={styles.midias}><FaLinkedin/></li>
             </ul>
             <span>&copy</span>
         </footer>

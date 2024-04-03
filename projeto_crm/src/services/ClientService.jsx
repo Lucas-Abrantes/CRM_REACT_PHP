@@ -11,7 +11,8 @@ function App() {
       .then(response => response.json())
       .then(data => { setCliente(data); })
       .catch(error => console.error('Erro ao buscar cliente:', error));
-  }, []);
+  }, [id]);
+  console.log(cliente);
 
   return (
     <div className={styles.tabela}>

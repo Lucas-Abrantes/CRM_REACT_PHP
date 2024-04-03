@@ -8,7 +8,6 @@ function Login() {
      const [password, setPassword] = useState('');
      const navigate = useNavigate();
 
-     
      const handleLogin = async (e) => {
      e.preventDefault();
        try {
@@ -17,12 +16,9 @@ function Login() {
            password, 
         });
          console.log(response.data);
-         // Aqui você pode armazenar o token recebido no localStorage/sessionStorage
-         // e redirecionar o usuário para a página inicial ou dashboard, por exemplo.
         navigate('/');
        } catch (error) {
          console.error("Erro de login:", error.response);
-         // Tratamento de erro
        }
      };
 
@@ -32,12 +28,10 @@ function Login() {
                  <label for="email">E-mail</label>
                  <input type='email' id="email" name='email' placeholder='Digite o nome' required onChange={e => setEmail(e.target.value)}></input>
             </div>
-
              <div className={styles.text_label}>
                  <label for="senha">Senha</label>
                  <input type='password' id="senha" name='senha' placeholder='Digite a senha' required  onChange={e => setPassword(e.target.value)}></input>
              </div>
-
              <button className={styles.btn} type='submit' value="enviar" >Enviar</button>
          </form>
      );

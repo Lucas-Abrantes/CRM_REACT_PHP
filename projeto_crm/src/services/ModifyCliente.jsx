@@ -1,90 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import styles from '../pages/dashboard/Dashboard.module.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function ModifyClient({clientId}) {
-    const [exibirFormulario, setExibirFormulario] = useState(false);
-    const [id, setId] = useState(clientId); // Supondo o ID como parte do estado
+
+function ModifyClient() {
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
     const [telefone, setTelefone] = useState('');
     const [empresa, setEmpresa] = useState('');
     const [status, setStatus] = useState('');
-    const toggleForm = () =>{
-        setExibirFormulario(!exibirFormulario);
-    }
+    const [senha, setSenha] = useState('');
+    const navigate = useNavigate();
+    const { id } = useParams(); 
+  
+    useEffect(() => {
+        if (id) { 
+            fetch(`http://127.0.0.1:8000/api/show/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    setNome(data.nome || ''); 
+                    setEmail(data.email || '');
+                    setTelefone(data.telefone || '');
+                    setEmpresa(data.empresa || '');
+                    setStatus(data.status || '');
+                    setSenha(''); 
+                })
+                .catch(error => console.error('Erro ao buscar cliente:', error));
+        }
+    }, [id]); 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const dadosFormulario = Object.fromEntries(formData.entries());
-    if(id !== 0){
         try{
             const response = await axios.post(`http://127.0.0.1:8000/api/update/${id}`, {
-                id,
                nome,
                email,
                telefone,
                empresa,
                status,
+               senha
+              
             });
             console.log(response.data);
-    
+            navigate('/'); 
         }catch(error){
             console.log("Erro ao cadastrar usuario: ", error.response);
         }
-        // Aqui você pode chamar a função para enviar os dados para a API
         console.log(dadosFormulario);
-        // Exemplo: await cadastrarCliente(dadosFormulario);
     }
    
-  };
-
   return (
     <div className={styles.cadastrar}>
     
-    <div className={styles.btnCadastro}>
-        <button onClick={toggleForm} className={styles.botao}>Alterar usuario</button>
-
-    </div>
-   
-      
-      {exibirFormulario && (
         <form onSubmit={handleSubmit}>
             <div className={styles.text_label}>
-                <label for="id">Id</label>
-                <input type='number' id="id" name='id' placeholder='Digite o id' required onChange={e => setId(e.target.value)}></input>
+                <label htmlFor="nome">Nome</label>
+                <input type='text' id="nome" name='nome' value={nome} placeholder='Digite o nome' required onChange={e => setNome(e.target.value)}></input>
             </div>
 
             <div className={styles.text_label}>
-                <label for="nome">Name</label>
-                <input type='text' id="nome" name='nome' placeholder='Digite o nome' required onChange={e => setNome(e.target.value)}></input>
-            </div>
-
-            <div className={styles.text_label}>
-                <label for="email">E-mail</label>
-                <input type='email' id="email" name='email' placeholder='Digite o e-mail' required onChange={e => setEmail(e.target.value)}></input>
+                <label htmlFor="email">E-mail</label>
+                <input type='email' id="email" name='email' placeholder='Digite o e-mail' value={email} required onChange={e => setEmail(e.target.value)}></input>
              </div>
 
             <div className={styles.text_label}>
-                <label for="telefone">Telefone</label>
-                <input type='text' id="telefone" name='telefone' placeholder='Digite o telefone' required  onChange={e => setTelefone(e.target.value)}></input>
+                <label htmlFor="telefone">Telefone</label>
+                <input type='text' id="telefone" name='telefone' placeholder='Digite o telefone' value={telefone} required  onChange={e => setTelefone(e.target.value)}></input>
             </div>
 
             <div className={styles.text_label}>
-                <label for="empresa">Empresa</label>
-                <input type='text' id="empresa" name='empresa' placeholder='Nome da empresa' required  onChange={e => setEmpresa(e.target.value)}></input>
+                <label htmlFor="empresa">Empresa</label>
+                <input type='text' id="empresa" name='empresa' placeholder='Nome da empresa' required  value={empresa} onChange={e => setEmpresa(e.target.value)}></input>
             </div>
 
             <div className={styles.text_label}>
-                <label for="status">Status</label>
-                <input type='text' id="status" name='status' placeholder='Status do cliente' required  onChange={e => setStatus(e.target.value)}></input>
+                <label htmlFor="status">Status</label>
+                <input type='text' id="status" name='status' placeholder='Status do cliente' required value={status} onChange={e => setStatus(e.target.value)}></input>
+            </div>
+            <div className={styles.text_label}>
+                <label htmlFor="senha">Senha</label>
+                <input type='password' id="senha" name='senha' placeholder='Deixar campo vazio para manter a senha' value={senha}  onChange={e => setSenha(e.target.value)}></input>
             </div>
 
             <div className={styles.btnCadastro}>
-                <button className={styles.botao} type='submit' value="Cadastrar" >Cadastar</button>
+                <button className={styles.botao} type='submit' value="Cadastrar" >Alterar usuário</button>
             </div>
         </form>
-      )}
     </div>
   );
 }
